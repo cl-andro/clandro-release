@@ -68,7 +68,7 @@ jobs:
       - name: Inject Version into app/build.gradle
         run: |
           VERSION_WITHOUT_V=${NEXT_TAG#v}
-          sed -i "s/versionName '[^']*'/versionName '$VERSION_WITHOUT_V'/g" app/build.gradle
+          sed -i -E "s/versionName (\"[^\"]*\"|'[^']*')/versionName \"$VERSION_WITHOUT_V\"/g" app/build.gradle
           echo "Injected versionName: $VERSION_WITHOUT_V"
 
       - name: Grant Execute Permission to Gradlew
