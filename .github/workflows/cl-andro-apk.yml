@@ -79,12 +79,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p app/src/main/assets
-          mkdir -p app/src/main/cpp
           gh release download --repo cl-andro/cl-andro-bootstrap-release --pattern "bootstrap-aarch64.zip" --dir app/src/main/assets
-          cp app/src/main/assets/bootstrap-aarch64.zip app/src/main/cpp/bootstrap-aarch64.zip
-          cp app/src/main/assets/bootstrap-aarch64.zip app/src/main/cpp/bootstrap-arm.zip
-          cp app/src/main/assets/bootstrap-aarch64.zip app/src/main/cpp/bootstrap-i686.zip
-          cp app/src/main/assets/bootstrap-aarch64.zip app/src/main/cpp/bootstrap-x86_64.zip
 
       - name: Build Release APK
         env:
